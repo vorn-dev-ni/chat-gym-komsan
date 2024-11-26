@@ -21,6 +21,38 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### firebase_option_dev
+
+```sh
+[bundle exec] fastlane firebase_option_dev
+```
+
+
+
+### firebase_option_prod
+
+```sh
+[bundle exec] fastlane firebase_option_prod
+```
+
+
+
+### firebase_option_staging
+
+```sh
+[bundle exec] fastlane firebase_option_staging
+```
+
+
+
+### testlane
+
+```sh
+[bundle exec] fastlane testlane
+```
+
+
+
 ----
 
 

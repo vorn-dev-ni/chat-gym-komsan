@@ -31,8 +31,41 @@ lane :load_env do |env|
 
 end
 
+lane :firebase_option_dev do 
+  # Get the flavor argument or default to 'dev'
+  flavor = "dev"
 
-default_platform(:android)
+   Dir.chdir('../') do
+    # Run flutterfire configure in the root directory
+    sh("flutterfire configure --project=demoleng-a6300 --out=./lib/utils/firebase_options_#{flavor}.dart")
+  end
+end
+lane :firebase_option_prod do 
+  # Get the flavor argument or default to 'dev'
+
+  
+   Dir.chdir('../') do
+    # Run flutterfire configure in the root directory
+    sh("flutterfire configure --project=demoleng-a6300 --out=./lib/utils/firebase_options.dart")
+  end
+end
+lane :firebase_option_staging do 
+  # Get the flavor argument or default to 'dev'
+  flavor = "staging"
+  
+   Dir.chdir('../') do
+    # Run flutterfire configure in the root directory
+    sh("flutterfire configure --project=demoleng-a6300 --out=./lib/utils/firebase_options.dart")
+  end
+end
+
+  lane :testlane do
+    current_dir = Dir.pwd
+    puts("Current directory is: #{current_dir}")
+  end
+
+
+
 
 platform :android do
   desc "Runs all the tests"
@@ -94,6 +127,8 @@ platform :android do
   end
 
 
+
+
   platform :android do
    lane :flutter_build_apk_release do
     # flavor = ENV['FLAVOR'] || 'prod' 
@@ -108,19 +143,19 @@ platform :android do
   lane :increment_version do
     # Get current version code from build.gradle
     version_code = get_version_code(
-      gradle_file_path: "../android/app/build.gradle"
+      gradle_file_path: "./android/app/build.gradle"
     )
     
     # Increment version code
     increment_version_code(
-      gradle_file_path: "../android/app/build.gradle"
+      gradle_file_path: "./android/app/build.gradle"
         #ext_constant_name: "test"
         #app_folder_name:"app"
   )
 
     # Get current version name from build.gradle
     version_name = get_version_name(
-         gradle_file_path: "../android/app/build.gradle",
+         gradle_file_path: "./android/app/build.gradle",
          ext_constant_name:"versionName"
 
     )
@@ -131,8 +166,6 @@ platform :android do
   end
 end
 
-
-
   platform :android do
   desc "Build and distribute APK for Staging"
   lane :staging_beta do
@@ -141,7 +174,7 @@ end
       task: "clean"
     )
     version_name = get_version_name(
-      gradle_file_path: "../android/app/build.gradle",
+      gradle_file_path: "./android/app/build.gradle",
       ext_constant_name:"versionName"
 
     )
@@ -150,7 +183,7 @@ end
       gradle_file_path: "app/build.gradle"
     )
     version_code = get_version_code(
-      gradle_file_path: "../android/app/build.gradle"
+      gradle_file_path: "./android/app/build.gradle"
     )
 
  

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: flutterfire configure --project=demoleng-a6300 --out=./lib/utils/firebase_options_dev.dart" time="32.412183">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

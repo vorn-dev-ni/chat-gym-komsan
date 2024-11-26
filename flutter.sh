@@ -26,6 +26,8 @@ case "$1" in
         ;;
 esac
 
+
+
 # Run flutter with the selected environment
 echo "Running Flutter for $FLAVOR environment..."
 flutter run --flavor "$FLAVOR" --target "$TARGET"

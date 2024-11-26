@@ -1,4 +1,4 @@
-enum Flavor { dev, production, staging }
+import 'package:demo/utils/constant/enums.dart';
 
 class AppConfig {
   late Flavor flavor;

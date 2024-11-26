@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_staging.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,9 +28,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCTi-EFZQyJOnRVqJio-fgKXadSvjPCpeI',
-    appId: '1:905655582501:web:70b4af6f6185281f6ae4cc',
-    messagingSenderId: '905655582501',
-    projectId: 'demoleng-a6300',
-    authDomain: 'demoleng-a6300.firebaseapp.com',
-    storageBucket: 'demoleng-a6300.appspot.com',
-    measurementId: 'G-J5B69VN4NZ',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCn0daOPDn3sBHfLJOS6sel01o8lS8WBlc',
-    appId: '1:905655582501:android:2f4f4799613180c26ae4cc',
+    appId: '1:905655582501:android:8e8eb962bbf0871e6ae4cc',
     messagingSenderId: '905655582501',
     projectId: 'demoleng-a6300',
-    storageBucket: 'demoleng-a6300.appspot.com',
+    storageBucket: 'demoleng-a6300.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD7-fIC4sWX0bYu_fsvwA1X3Gr4EuITxRs',
-    appId: '1:905655582501:ios:585069f834ca51166ae4cc',
+    appId: '1:905655582501:ios:011d5b2a327c95716ae4cc',
     messagingSenderId: '905655582501',
     projectId: 'demoleng-a6300',
-    storageBucket: 'demoleng-a6300.appspot.com',
-    iosBundleId: 'com.example.demo',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD7-fIC4sWX0bYu_fsvwA1X3Gr4EuITxRs',
-    appId: '1:905655582501:ios:585069f834ca51166ae4cc',
-    messagingSenderId: '905655582501',
-    projectId: 'demoleng-a6300',
-    storageBucket: 'demoleng-a6300.appspot.com',
-    iosBundleId: 'com.example.demo',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCTi-EFZQyJOnRVqJio-fgKXadSvjPCpeI',
-    appId: '1:905655582501:web:0096740f53383f696ae4cc',
-    messagingSenderId: '905655582501',
-    projectId: 'demoleng-a6300',
-    authDomain: 'demoleng-a6300.firebaseapp.com',
-    storageBucket: 'demoleng-a6300.appspot.com',
-    measurementId: 'G-SNZBRC5P4B',
+    storageBucket: 'demoleng-a6300.firebasestorage.app',
+    iosBundleId: 'com.example.demo.staging',
   );
 }
